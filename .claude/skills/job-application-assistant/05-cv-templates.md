@@ -2,73 +2,63 @@
 
 <!-- SETUP: Profile statements and section ordering are personalized by running /setup -->
 
-## Template: LaTeX moderncv (Banking Style)
+## Template: Custom LaTeX (Jake Gutierrez-style resume)
 
-All CVs use the moderncv LaTeX package with the "banking" style and "blue" color scheme.
+CVs use Yaphet's existing resume template (`article` class, custom `\resume*` commands - based on the widely-used sb2nov/Jake Gutierrez format). This compiles cleanly with plain **pdflatex** - no fontawesome5 issues, no lualatex/xelatex dependency for the CV.
 
 **Output file:** `cv/main_<company>.tex`
-**Compile with:** **lualatex** on MiKTeX/TeX Live. pdflatex often fails on modern MiKTeX installs with `fontawesome5` font-expansion errors; lualatex handles the same sources cleanly.
-**Master reference:** `cv/main_example.tex` (comprehensive CV with all competencies, experience, and achievements - use as source when building targeted CVs)
+**Compile with:** `pdflatex` (TeX Live, already available in this environment - no install step needed).
+**Master reference:** `cv/main_example.tex` (Yaphet's actual resume - use as source when building targeted versions; also mirrored at `documents/cv/main2.tex` for `/setup` Path A ingestion)
 
 ### Compile command
 
 ```bash
-cd cv && lualatex -interaction=nonstopmode main_<company>.tex
+cd cv && pdflatex -interaction=nonstopmode main_<company>.tex
 ```
 
 Expected output: `Output written on main_<company>.pdf (2 pages, ...)`. Any page count other than 2 is a failure that must be fixed before presenting to the user.
 
 ## Document Structure
 
+The template defines custom commands used throughout - do not rewrite the document in raw LaTeX, use these:
+
+- `\resumeSubHeadingListStart` / `\resumeSubHeadingListEnd` - wraps a section's list of entries (Education, Experience, Leadership)
+- `\resumeSubheading{Org/Role}{Dates}{Sub-line}{Location}` - a standard two-column entry heading (used for Education, Experience)
+- `\resumeProjectHeading{Title + stack + award}{Dates}` - project entry heading
+- `\resumeLeadershipHeading{Role}{Org}{Dates}` - leadership entry heading
+- `\resumeItemListStart` / `\resumeItemListEnd` - wraps bullet points under an entry
+- `\resumeItem{text}` - a single bullet
+
+Section order in the master file: Education, Technical Skills, Experience, Projects, Leadership & Extracurriculars. Header block (name/phone/email/LinkedIn/GitHub) uses a centered `\Huge \scshape` name line - keep this format when tailoring.
+
 ```latex
-\documentclass[11pt,a4paper,sans]{moderncv}
-\moderncvstyle{banking}
-\moderncvcolor{blue}
-
-% Force both first and last name AND section headings to render in moderncv
-% blue (color1). Default banking on lualatex+MiKTeX leaves these black, which
-% looks inconsistent with the rest of the blue accent scheme.
-\renewcommand*{\firstnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{color1}#1}}
-\renewcommand*{\lastnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{color1}#1}}
-\renewcommand*{\sectionstyle}[1]{{\sectionfont\color{color1}#1}}
-
-\usepackage[utf8]{inputenc}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
-    pdfpagemode=FullScreen,
-}
-\usepackage[scale=0.77]{geometry}
-\usepackage{import}
-
-% Personal data
-\name{[FIRST_NAME]}{[LAST_NAME]}
-\address{[YOUR_ADDRESS]}{}{}
-\phone[mobile]{[YOUR_PHONE]}
-\email{[YOUR_EMAIL]}
-\extrainfo{\href{[YOUR_LINKEDIN_URL]}{LinkedIn}, \href{[YOUR_GITHUB_URL]}{GitHub}}
+\documentclass[letterpaper,10pt]{article}
+% ... (see cv/main_example.tex for the full preamble - custom commands only, no external template package)
 
 \begin{document}
-\makecvtitle
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape [FULL_NAME]} \\ \vspace{1pt}
+    \small [PHONE] $|$
+    \href{mailto:[EMAIL]}{\underline{[EMAIL]}} $|$
+    \href{[LINKEDIN_URL]}{\underline{linkedin.com/in/[HANDLE]}} $|$
+    \href{[GITHUB_URL]}{\underline{github.com/[HANDLE]}}
+\end{center}
 
-% 1. Profile statement (1-3 sentences, tailored per role)
-% 2. Skills section
-% 3. Education section
-% 4. Professional Experience section
-% 5. Selected Publications (if applicable)
-% 6. Honors and Awards (if applicable)
-% 7. References
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading{School}{}{Degree (grad date)}{Location}
+    \resumeItemListStart
+        \resumeItem{Relevant coursework, tailored per role}
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+% Technical Skills, Experience (\resumeSubheading), Projects (\resumeProjectHeading),
+% Leadership (\resumeLeadershipHeading) follow the same pattern - see cv/main_example.tex.
 
 \end{document}
 ```
 
-### Color overrides
-
-The three `\renewcommand*` lines in the preamble are required on lualatex+MiKTeX. Without them the firstname, lastname, and section headings render in black even though `\moderncvcolor{blue}` is set, which looks inconsistent with the rest of the blue accent scheme (links, bullet markers, contact icons). The override forces all three to use `color1` (moderncv's accent colour, which becomes blue under `\moderncvcolor{blue}`). Both names render bold; if you prefer the firstname in regular weight, change the firstnamestyle override from `\bfseries` to `\mdseries`. Don't drop the override - on most modern installs the defaults render visibly wrong.
 
 ### Spacing inside itemize lists (important)
 
@@ -94,7 +84,7 @@ The three `\renewcommand*` lines in the preamble are required on lualatex+MiKTeX
 
 Two related patterns are fine and should be kept:
 - `\vspace{1pt}` immediately after `\section{...}` (between section heading and first item) - this is between the heading and the list, not between list items.
-- `\vspace{3pt}` between top-level `\cventry` blocks in Professional Experience or Education - this gives breathing room between roles and renders consistently.
+- `\vspace{3pt}` between top-level `\resumeSubheading (or \resumeProjectHeading/\resumeLeadershipHeading)` blocks in Professional Experience or Education - this gives breathing room between roles and renders consistently.
 
 ## Section-by-Section Tailoring
 
@@ -150,18 +140,18 @@ If there is a gap in your employment history:
 
 After writing the CV and before presenting to the user, always compile and visually inspect the PDF. Iterate until the layout is clean. Workflow:
 
-1. Run `lualatex -interaction=nonstopmode main_<company>.tex`
+1. Run `pdflatex -interaction=nonstopmode main_<company>.tex`
 2. Check the output page count: must be exactly 2
 3. Read the PDF via the Read tool and visually inspect both pages
-4. Check for **orphaned entries**: a `\cventry` title line must never sit alone at the bottom of page 1 with its bullets on page 2
+4. Check for **orphaned entries**: a `\resumeSubheading (or \resumeProjectHeading/\resumeLeadershipHeading)` title line must never sit alone at the bottom of page 1 with its bullets on page 2
 
 ### Fixing common page-break problems
 
 **Problem: entry title on page 1, bullets orphaned to page 2**
-Add `\needspace{5\baselineskip}` immediately before the problematic `\cventry`:
+Add `\needspace{5\baselineskip}` immediately before the problematic `\resumeSubheading (or \resumeProjectHeading/\resumeLeadershipHeading)`:
 ```latex
 \needspace{5\baselineskip}
-\item{\cventry{YEAR--YEAR}{Role Title}{Organization}{Location}{}{...}}
+\item{\resumeSubheading (or \resumeProjectHeading/\resumeLeadershipHeading){YEAR--YEAR}{Role Title}{Organization}{Location}{}{...}}
 ```
 Include `\usepackage{needspace}` in the preamble.
 
@@ -187,7 +177,7 @@ cd cv && pdftotext -layout main_<company>.pdf main_<company>.txt
 What to check in the extraction:
 
 - **Contact details as literal text.** The stock template's fontawesome contact icons extract as glyph names (`MOBILE-ALT`, `Envelope`) - harmless noise, because the actual address and number are printed beside them. The failure mode is a contact detail carried *only* by an icon or a hyperlink (like the `LinkedIn` link text, whose URL is not in the text layer): invisible to an ATS. The email address must always appear as printed text.
-- **No garbled output.** `(cid:NNN)` markers or `�` characters mean a font is embedded without a Unicode mapping - an ATS sees the same garbage. This shows up with unusual fonts in custom templates, not with the stock moderncv setup under lualatex.
+- **No garbled output.** `(cid:NNN)` markers or `�` characters mean a font is embedded without a Unicode mapping - an ATS sees the same garbage. This shows up with unusual fonts in custom templates, not with the stock the custom resume template setup under pdflatex.
 - **Reading order.** The stock banking style is single-column, so extraction order matches visual order. Custom templates (via `/add-template`) with sidebars or multi-column layouts can interleave unrelated lines; if extraction order is scrambled, the user is trading ATS compatibility for looks and should be told.
 - **Keyword coverage.** Match the posting's required/preferred terms against the extracted text, in the posting's language. Prefer the posting's exact term over a synonym when it is truthfully applicable - ATS matching is often literal. Never add a keyword the profile does not support.
 

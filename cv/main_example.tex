@@ -1,169 +1,195 @@
-%% Example CV - [YOUR_NAME]
-%% Comprehensive overview of all competencies, experience, and achievements.
-%% Use as a master reference when tailoring role-specific CVs.
-%%
-%% SETUP: Run /setup to populate this with your actual information.
-%% Compile with: lualatex main_example.tex
-%% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
 
-\documentclass[11pt,a4paper,sans]{moderncv}
-\moderncvstyle{banking}
-\moderncvcolor{blue}
+\documentclass[letterpaper,10pt]{article}
 
-% Force both first and last name AND section headings to render in moderncv
-% blue (color1). Default banking on lualatex+MiKTeX leaves these black, which
-% looks inconsistent with the rest of the blue accent scheme.
-\renewcommand*{\firstnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{color1}#1}}
-\renewcommand*{\lastnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{color1}#1}}
-\renewcommand*{\sectionstyle}[1]{{\sectionfont\color{color1}#1}}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
 
-\usepackage[utf8]{inputenc}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
-    pdfpagemode=FullScreen,
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-.65in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
 }
-\usepackage[scale=0.80]{geometry}
-\usepackage{import}
 
-% personal data
-\name{[First]}{[Last]}
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
 
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small\textbf{#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeLeadershipHeading}[3]{
+    \item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \small\textbf{#1}, \textit{#2} & \textit{\small #3} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
 \begin{document}
 
-\makecvtitle
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Yaphet Lemiesa} \\ \vspace{1pt}
+    \small 240-390-7499 $|$
+    \href{mailto:yaphkl75@mit.edu}{\underline{yaphkl75@mit.edu}} $|$
+    \href{https://www.linkedin.com/in/yaphet-lemiesa-606603287/}{\underline{linkedin.com/in/yaphet-lemiesa}} $|$
+    \href{https://github.com/ylemiesa57}{\underline{github.com/ylemiesa57}}
+\end{center}
 
-% ============================================================
-%     PROFILE STATEMENT
-% ============================================================
-
-\vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
-
-% ============================================================
-%     CORE COMPETENCIES
-% ============================================================
-
-\section{Core Competencies}
-\vspace{1pt}
-\begin{itemize}
-
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
-
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
-
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
-
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
-
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
-
-\end{itemize}
-
-% ============================================================
-%     PROFESSIONAL EXPERIENCE
-% ============================================================
-
-\section{Professional Experience}
-\vspace{3pt}
-\begin{itemize}
-
-% --- Most Recent Role ---
-\item{\cventry{[YYYY--Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
-\begin{itemize}
-    \item [Achievement or responsibility 1 - be specific, use numbers where possible]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-    \item [Achievement or responsibility 4]
-\end{itemize}}}
-
-\vspace{3pt}
-
-% --- Previous Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
-\begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-\end{itemize}}}
-
-\vspace{3pt}
-
-% --- Earlier Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
-\begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-\end{itemize}}}
-
-\end{itemize}
-
-% ============================================================
-%     EDUCATION
-% ============================================================
-
+%-----------EDUCATION-----------
 \section{Education}
-\vspace{1pt}
-\begin{itemize}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Massachusetts Institute of Technology}{}
+      {B.S. in Electrical Engineering and Computer Science (May 2027), M. Engineering (May 2028)}{Cambridge, MA}
+    \resumeItemListStart
+        \resumeItem{\emph{Coursework:} Operating System Engineering, Distributed Systems, Machine Learning, Robotic Manipulation, Algorithms, Computation Structures}
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
-}}
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+  \resumeSubHeadingListStart
+    \item\small{
+      \textbf{Languages:} Python, C, C++, SQL, Bash, Java, JavaScript/TypeScript, Go, Bluespec SystemVerilog \\
+      \textbf{Frameworks \& Tools:} PyTorch, React, FastAPI, Node.js, Flask, Docker, Kubernetes, AWS (EKS), Kafka, Spark, Azure, Git, Firebase, PostgreSQL \\
+      \textbf{AI/ML:} Gemma, Llama.cpp, DistilBERT, Transformers (HuggingFace), OpenCV, Docling, FAISS, Ollama
+    }
+  \resumeSubHeadingListEnd
 
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Software Engineer Intern}{May 2026 -- Present}
+      {Bloomberg L.P.}{New York, NY}
+      \resumeItemListStart
+        \resumeItem{Architecting a DevOps agent (\textbf{Python, AWS EKS, Kubernetes}) that autonomously emulates Bloomberg Media infrastructure across \textbf{12+ cluster configurations}, enabling deterministic reproduction of production failures for cross-team debugging workflows.}
+        \resumeItem{Engineering a high-accuracy debugging framework correlating distributed traces across \textbf{40+ services}, targeting \textbf{60\%} reduction in mean time-to-resolution (MTTR) and cutting environment spin-up from hours to under \textbf{4 minutes}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Engineering Intern}{June 2025 -- Present}
+      {Jet Propulsion Laboratory (NASA)}{Pasadena, CA}
+      \resumeItemListStart
+        \resumeItem{Accelerated mission-critical systems verification by \textbf{65\%} by architecting a \textbf{Gemma/Llama.cpp} RAG pipeline to auto-generate knowledge graphs from 20+ PDF specifications.}
+        \resumeItem{Engineered a data ingestion system using \textbf{OpenCV/Docling} parsing, cutting pre-processing time for \textbf{2 TB} of specifications by \textbf{95\%} (6 hours to 18 mins) and enabling 10$\times$ larger model context.}
+        \resumeItem{Deployed a full-stack dashboard (\textbf{React, Python, SQL}) integrating data streams from Jama, GitHub, and Jira, streamlining cross-team engineering workflows by \textbf{25\%}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineer Intern}{June 2024 -- Aug.\ 2024}
+      {Zenyai Inc.\ (TechStars Startup)}{Miami, FL (Remote)}
+      \resumeItemListStart
+        \resumeItem{Containerized all microservices with \textbf{Docker} and led database migrations (\textbf{SQL}, Alembic), accelerating CI/CD deployment times to Azure by \textbf{90\%} and eliminating service downtime for \textbf{170 users}.}
+        \resumeItem{Overhauled \textbf{100\% of RESTful API} endpoints (\textbf{Node.js/Flask}) and implemented Firebase authentication integrated with \textbf{Azure}, improving security audit scores by \textbf{40\%} and cutting API latency by \textbf{50\%}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Quantitative Researcher}{Sept.\ 2024 -- Present}
+      {Cybersecurity at MIT Sloan (CAMS)}{Cambridge, MA}
+      \resumeItemListStart
+        \resumeItem{Co-authored two papers on AI-driven cybersecurity policy accepted at the \textbf{Winter Simulation Conference (WSC)}, using the Colonial Pipeline incident as a primary case study.}
+        \resumeItem{Architected a quantitative cyber risk model (\textbf{Python, C++}) using Monte Carlo and Bayesian ML, achieving \textbf{85\% accuracy} in forecasting financial exposure and guiding decisions to mitigate \textbf{\$3M} in potential losses.}
+        \resumeItem{Engineered a \textbf{PyTorch} ML model to detect zero-day anomalies in network traffic, identifying \textbf{3 critical vulnerabilities} and protecting millions in enterprise assets.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
 \vspace{3pt}
+\resumeSubHeadingListStart
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
-}}
+  \resumeProjectHeading
+    {\textbf{EmbraceAI} $|$ \emph{Python, Transformers, FastAPI, HuggingFace} $|$ \textbf{1st Place, AI CAMP -- NLP Track}}{2023}
+    \resumeItemListStart
+      \resumeItem{\textbf{Won Top NLP Project} at HackMIT, competing against 200+ teams; built an AI-powered mental health support system using fine-tuned \textbf{DistilBERT} achieving \textbf{91\% intent classification accuracy} across 12 conversational categories.}
+      \resumeItem{Designed a full-stack REST API (\textbf{FastAPI}) serving real-time inference at \textbf{under 80 ms} end-to-end latency with context-aware dialogue management across multi-turn conversations.}
+    \resumeItemListEnd
 
-\end{itemize}
+  \resumeProjectHeading
+    {\textbf{Edge RAG LLM Accelerator} $|$ \emph{Python, AccelForge, PyTorch} $|$ \textbf{Research Paper}}{2025 -- 2026}
+    \resumeItemListStart
+      \resumeItem{Modelled a Sheared-LLaMA 2.7B system on a Jetson Orin Nano-class platform (\textbf{8GB shared DRAM}) using Einsum-based prefill/decode latency formulations across \textbf{5 million}-document corpora.}
+      \resumeItem{Reduced retrieval latency by \textbf{40\%} via a DRAM embedding cache optimizer and structured \textbf{4:2 sparsity} pruning on the vector index, resolving the memory contention bottleneck between LLM weights and the embedding cache.}
+    \resumeItemListEnd
 
-% ============================================================
-%     LANGUAGES
-% ============================================================
+\resumeSubHeadingListEnd
 
-\section{Languages}
-\vspace{1pt}
-\begin{itemize}
-\item [Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).
-\end{itemize}
-
-% ============================================================
-%     PUBLICATIONS (optional)
-% ============================================================
-
-\section{Publications}
-\vspace{1pt}
-\begin{itemize}
-\item [Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
-\end{itemize}
-
-% ============================================================
-%     REFERENCES
-% ============================================================
-
-\section{References}
-\vspace{1pt}
-\begin{itemize}
-\item{Available upon request.}
-\end{itemize}
+%-----------LEADERSHIP & EXTRACURRICULARS-----------
+\section{Leadership \& Extracurriculars}
+    \resumeSubHeadingListStart
+        \resumeLeadershipHeading{President}{MIT Ethiopian-Eritrean Students Association}{Mar.\ 2025 -- Present}
+            \resumeItemListStart
+                \resumeItem{Led 5-person board, grew membership \textbf{30\%}, and managed \textbf{\$15,000} budget for 10+ cultural and professional events serving 150+ students.}
+                \resumeItem{Expanded community programming through alumni panels, heritage events, and cross-cultural partnerships, increasing semester engagement by \textbf{40\%}.}
+            \resumeItemListEnd
+        \resumeLeadershipHeading{Sponsorship Director}{Claude Builders Club, Anthropic}{Jan.\ 2026 -- Present}
+            \resumeItemListStart
+                \resumeItem{Secured \textbf{\$15,000} in sponsorships and co-organized hackathons and technical workshops for an MIT club of 100+ students.}
+            \resumeItemListEnd
+        \resumeLeadershipHeading{Coordinator}{MIT Global Teaching Labs Bahrain}{Jan.\ 2025}
+            \resumeItemListStart
+                \resumeItem{Designed and delivered a 4-week Python and Robotics curriculum to 50+ high school students in Bahrain, achieving a \textbf{95\%} program completion rate.}
+            \resumeItemListEnd
+    \resumeSubHeadingListEnd
 
 \end{document}
