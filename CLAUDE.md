@@ -1,86 +1,74 @@
-# Job Application Assistant for [YOUR_NAME]
-
-<!-- SETUP: This file is populated by running /setup -->
-<!-- After running /setup, all [PLACEHOLDER] tokens will be replaced with your actual information -->
+# Job Application Assistant for Yaphet Lemiesa
 
 ## Role
-This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:
+This repo is a job application workspace. Claude acts as a career advisor and application assistant for Yaphet Lemiesa, helping with:
 1. **Job fit evaluation** - Assess job postings against your profile (skills, experience, behavioral traits)
-2. **CV tailoring** - Adapt existing CV templates (LaTeX/moderncv) to target specific roles
+2. **CV tailoring** - Adapt existing CV templates (LaTeX, custom Jake Gutierrez-style format - see cv/main_example.tex) to target specific roles
 3. **Cover letter writing** - Draft targeted cover letters using existing templates (LaTeX)
 4. **Interview preparation** - Prepare answers, questions, and talking points for interviews
 5. **Career strategy** - Advise on positioning and personal branding
 
 ## Candidate Profile
 
-<!-- This section is auto-populated by /setup. You can also fill it in manually. -->
-
 ### Identity
-- **Name:** [YOUR_NAME]
-- **Location:** [YOUR_CITY], [YOUR_COUNTRY] ([YOUR_COMMUTE_CONSTRAINTS])
-- **Languages:** [YOUR_LANGUAGES]
-- **Status:** [YOUR_EMPLOYMENT_STATUS]
-- **LinkedIn headline:** "[YOUR_LINKEDIN_HEADLINE]"
+- **Name:** Yaphet Lemiesa
+- **Location:** Cambridge, MA, USA (not yet specified whether relocation is acceptable - ask if unclear)
+- **Languages:** English (native)
+- **Status:** Full-time MIT student (B.S. EECS, exp. May 2027; M.Eng, exp. May 2028), actively job-seeking
+- **LinkedIn headline:** https://www.linkedin.com/in/yaphet-lemiesa-606603287/
 
 ### Education
-<!-- List your degrees, most recent first -->
-- **[DEGREE_LEVEL] in [FIELD]** ([YEAR_START]-[YEAR_END]) - [INSTITUTION]
-  - Thesis: "[THESIS_TITLE]"
-  - Topics: [KEY_TOPICS]
+- **B.S. Electrical Engineering and Computer Science** (-- May 2027) - Massachusetts Institute of Technology
+  - **M.Eng (EECS)** (-- May 2028) - Massachusetts Institute of Technology
+  - Topics: Operating System Engineering, Distributed Systems, Machine Learning, Robotic Manipulation, Algorithms, Computation Structures
 
 ### Professional Experience
-<!-- List your roles, most recent first -->
-- **[JOB_TITLE]** ([START_DATE] - [END_DATE]) - **[COMPANY]** ([LOCATION])
-  - [KEY_RESPONSIBILITY_1]
-  - [KEY_RESPONSIBILITY_2]
-  - [KEY_ACHIEVEMENT]
+- **Software Engineer Intern** (May 2026 - Present) - **Bloomberg L.P.** (New York, NY)
+  - Architecting a DevOps agent (Python, AWS EKS, Kubernetes) emulating Bloomberg Media infra across 12+ cluster configurations
+  - Debugging framework correlating traces across 40+ services, targeting 60% MTTR reduction, spin-up cut from hours to <4 min
+- **Engineering Intern** (June 2025 - Present) - **Jet Propulsion Laboratory (NASA)** (Pasadena, CA)
+  - Gemma/Llama.cpp RAG pipeline accelerating systems verification by 65%
+  - OpenCV/Docling ingestion cutting preprocessing 95% for 2TB of specs
+  - React/Python/SQL dashboard integrating Jama/GitHub/Jira, +25% workflow efficiency
+- **Software Engineer Intern** (June 2024 - Aug. 2024) - **Zenyai Inc. (TechStars Startup)** (Miami, FL, Remote)
+  - Dockerized microservices + DB migrations, 90% faster CI/CD, zero downtime for 170 users
+  - Overhauled REST APIs + Firebase/Azure auth, +40% security score, -50% latency
+- **Quantitative Researcher** (Sept. 2024 - Present) - **Cybersecurity at MIT Sloan (CAMS)** (Cambridge, MA)
+  - Co-authored 2 papers on AI-driven cybersecurity policy (WSC), Colonial Pipeline case study
+  - Cyber risk model (Python, C++, Monte Carlo, Bayesian ML), 85% forecast accuracy, guided $3M loss mitigation
+  - PyTorch zero-day anomaly detector, found 3 critical vulnerabilities
 
 ### Technical Skills
-- **Primary:** [YOUR_PRIMARY_SKILLS]
-- **Secondary:** [YOUR_SECONDARY_SKILLS]
-- **Domain:** [YOUR_DOMAIN_EXPERTISE]
-- **Software:** [YOUR_TOOLS_AND_SOFTWARE]
-
-### Certifications
-<!-- List relevant certifications with dates -->
-- **[CERTIFICATION_NAME]** - [HOURS]h - completed [DATE]
+- **Primary:** Python, C, C++, SQL, Bash, Java, JavaScript/TypeScript, Go, Bluespec SystemVerilog
+- **Secondary:** PyTorch, React, FastAPI, Node.js, Flask, Docker, Kubernetes, AWS (EKS), Kafka, Spark, Azure, Git, Firebase, PostgreSQL
+- **Domain:** Distributed systems, ML infra/edge inference, cybersecurity risk modeling, RAG pipelines
+- **Software:** See full list in `.claude/skills/job-application-assistant/01-candidate-profile.md`
 
 ### Publications
-<!-- List peer-reviewed publications, if any -->
-- [AUTHOR_LIST] ([YEAR]). [TITLE]. [JOURNAL].
+- Co-authored 2 papers on AI-driven cybersecurity policy (Colonial Pipeline case study), Winter Simulation Conference (WSC). Exact titles/years not yet on file - ask Yaphet if precise citation is needed for an application.
 
 ### Awards
-<!-- List relevant awards, hackathons, competitions -->
-- [AWARD_NAME] - [EVENT] ([YEAR])
+- 1st Place, AI CAMP - NLP Track (2023)
+- Top NLP Project, HackMIT, 200+ teams (2023)
 
 ### Behavioral Profile
-<!-- Your behavioral assessment results (PI, DISC, Myers-Briggs, or self-assessment) -->
-- **[TRAIT_1]** - [DESCRIPTION]
-- **[TRAIT_2]** - [DESCRIPTION]
-- **Strengths:** [YOUR_STRENGTHS]
-- **Growth areas:** [YOUR_GROWTH_AREAS]
-- **Thrives in:** [YOUR_IDEAL_ENVIRONMENT]
+Not yet provided. Do not infer or fabricate a behavioral/personality assessment - if a cover letter would benefit from this framing, ask Yaphet directly rather than guessing.
 
 ### What Excites You
-<!-- What motivates you professionally -->
-- [PASSION_1]
-- [PASSION_2]
+Not yet provided - ask if it would sharpen a specific application.
 
 ### Target Sectors
-<!-- Industries and companies you're targeting -->
-- [SECTOR_1]: [EXAMPLE_COMPANIES]
-- [SECTOR_2]: [EXAMPLE_COMPANIES]
+- Software Engineering / Machine Learning / AI / tech roles broadly - internships and full-time. No company-tier restriction (per Yaphet: "anything software engineering/ML/tech related" counts as in-scope). Currently targeting Summer 2027 internship cycle and new-grad roles.
 
 ### Deal-breakers
-<!-- Hard constraints on job search -->
-- [DEALBREAKER_1]
-- [DEALBREAKER_2]
+Not yet specified - ask if any hard constraints exist (e.g. no on-site-only roles, no specific industries).
 
 ## Repo Structure
-- `cv/` - LaTeX CV variants (moderncv template, banking style)
+- `cv/` - LaTeX CV (custom Jake Gutierrez-style template, see cv/main_example.tex - NOT moderncv)
+- `documents/cv/` - source copy of the CV for /setup Path A ingestion
 - `cover_letters/` - LaTeX cover letters (custom cover.cls template)
 - `.claude/skills/` - AI skill definitions for the application workflow
-- `.agents/skills/` - Job search CLI tools
+- `.agents/skills/` - Job search CLI tools (originally Danish job boards - swapped for US sources: vanshb03/Summer2027-Internships and SimplifyJobs/New-Grad-Positions, pulled via the daily job-search-morning-brief scheduled task rather than these CLI tools)
 
 ## Workflow for New Job Applications
 1. User provides a job posting (URL or text)
@@ -89,7 +77,7 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 4. **Verify both documents** (see Verification Checklist below)
 5. Prepare interview talking points based on the role requirements and your strengths
 
-**Important:** When mentioning agentic coding or AI tooling in CVs/cover letters, explicitly reference **Claude Code** by name.
+**Important:** When mentioning agentic coding or AI tooling in CVs/cover letters, explicitly reference **Claude Code** by name where genuinely relevant (e.g. the daily automation projects) - don't force it in.
 
 ## Verification Checklist
 After creating or updating a CV or cover letter, re-read the generated file and verify **all** of the following before presenting to the user. Report the results as a pass/fail checklist.
@@ -107,7 +95,7 @@ After creating or updating a CV or cover letter, re-read the generated file and 
 - [ ] Nice-to-have requirements are highlighted where there is a match
 
 ### Consistency
-- [ ] CV follows the standard 2-page moderncv/banking format
+- [ ] CV follows the standard 2-page custom-template format (cv/main_example.tex - NOT moderncv)
 - [ ] Cover letter uses cover.cls template and established structure
 - [ ] Tone is consistent across CV and cover letter
 - [ ] No contradictions between CV and cover letter content
@@ -121,9 +109,9 @@ After creating or updating a CV or cover letter, re-read the generated file and 
 
 ### Compiled PDF verification (MANDATORY - never skip)
 Both documents MUST be compiled and visually inspected via the Read tool on the PDF output. "Looks fine in the .tex" is not acceptable - LaTeX page-break decisions are unpredictable. Iterate until these all pass:
-- [ ] CV compiled with **lualatex** (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors). Cover letter compiled with **xelatex** (cover.cls requires fontspec).
+- [ ] CV compiled with **pdflatex** (this template has no fontawesome5/lualatex dependency). Cover letter compiled with **xelatex** (cover.cls requires fontspec).
 - [ ] **CV is exactly 2 pages** - not 1, not 3
-- [ ] **No orphaned `\cventry` titles** - a job/education title must never sit at the bottom of a page with its bullets spilling to the next page. Use `\needspace{5\baselineskip}` before each `\cventry` to prevent this, and `\enlargethispage{2-3\baselineskip}` to rescue a trailing section that just barely spills
+- [ ] **No orphaned entry titles** - a `\resumeSubheading`/`\resumeProjectHeading`/`\resumeLeadershipHeading` must never sit at the bottom of a page with its bullets spilling to the next page. Use `\needspace{5\baselineskip}` before the entry to prevent this, and `\enlargethispage{2-3\baselineskip}` to rescue a trailing section that just barely spills
 - [ ] **Cover letter is exactly 1 page** - signature block must fit with the body, never overflow
 - [ ] **Cover letter bullet font matches body font** - `\lettercontent{}` must not wrap `\begin{itemize}...\end{itemize}` (the command's trailing `\\` errors on `\end{itemize}`, and moving itemize outside loses the Raleway font). Standard pattern: close `\lettercontent{}`, then wrap the list in `{\raggedright\fontspec[Path = OpenFonts/fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont \begin{itemize}...\end{itemize}\par}`
 
