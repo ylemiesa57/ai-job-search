@@ -87,6 +87,21 @@ class DetectColumnTypeTests(unittest.TestCase):
 
         self.assertEqual(companies[0]["categories"]["software_engineering"], {"count": 8, "index": 110.0})
 
+    def test_parse_sheet_dedupes_columns_that_collide_on_the_same_category_name(self):
+        # "Total" and "TOTAL" both slugify to "total". Before the fix, the
+        # second column silently overwrote the first in entry["categories"],
+        # losing an entire column of data with no warning.
+        ws = FakeWorksheet([
+            ("Firma", "Total", "TOTAL"),
+            ("Acme", 42, 99),
+        ])
+
+        companies = parse_sheet(ws)
+
+        categories = companies[0]["categories"]
+        self.assertEqual(categories["total"], {"index": 42.0})
+        self.assertEqual(categories["total_2"], {"index": 99.0})
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -172,8 +172,28 @@ def parse_sheet(ws, sheet_label=None):
         categories.append({
             "name": col_header.lower().replace(" ", "_"),
             "value_col": col_idx,
+            "header": col_header,
         })
         i += 1
+
+    # Two distinct columns can slugify to the same category name (e.g. two
+    # headers differing only in case/whitespace, or unrelated columns that
+    # both strip down to "total"). Without this check the later column's
+    # values silently overwrite the earlier column's in entry["categories"],
+    # dropping data with no indication anything was lost.
+    seen_names = {}
+    for cat in categories:
+        name = cat["name"]
+        seen_names[name] = seen_names.get(name, 0) + 1
+        if seen_names[name] > 1:
+            deduped = f"{name}_{seen_names[name]}"
+            print(
+                f"Warning: sheet '{ws.title}' has multiple columns mapping to "
+                f"category '{name}' (column '{cat.get('header', name)}'); "
+                f"renamed to '{deduped}' to avoid overwriting data.",
+                file=sys.stderr,
+            )
+            cat["name"] = deduped
 
     # Parse data rows
     companies = []
